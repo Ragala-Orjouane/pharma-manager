@@ -1,0 +1,16 @@
+# Backend
+pharma_backend/venv/
+pharma_backend/__pycache__/
+pharma_backend/*.sqlite3
+pharma_backend/.env
+
+# Frontend
+pharma_frontend/node_modules/
+pharma_frontend/.env
+pharma_frontend/dist/
+
+# Global
+.env
+__pycache__/
+*.pyc
+.DS_Store

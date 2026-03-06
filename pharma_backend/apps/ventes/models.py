@@ -1,3 +1,5 @@
+import datetime
+
 from django.db import models
 
 from django.utils import timezone
@@ -30,7 +32,8 @@ class Vente(models.Model):
 
     reference = models.CharField(
         max_length=20,
-        unique=True
+        unique=True,
+        blank=True
     )
 
     date_vente = models.DateTimeField(default=timezone.now)
@@ -51,7 +54,24 @@ class Vente(models.Model):
 
     def __str__(self):
         return self.reference
+    
+    def save(self, *args, **kwargs):
 
+        if not self.reference:
+
+            annee = datetime.now().year
+
+            last_vente = Vente.objects.filter(reference__startswith=f"VNT-{annee}").order_by("id").last()
+
+            if last_vente:
+                last_number = int(last_vente.reference.split("-")[-1])
+                new_number = last_number + 1
+            else:
+                new_number = 1
+
+            self.reference = f"VNT-{annee}-{new_number:04d}"
+
+        super().save(*args, **kwargs)
 
 class LigneVente(models.Model):
     """

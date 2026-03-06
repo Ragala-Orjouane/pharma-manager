@@ -129,3 +129,10 @@ STATIC_URL = 'static/'
 REST_FRAMEWORK = {
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
 }
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'PharmaManager API',
+    'DESCRIPTION': 'API de gestion de pharmacie — PharmaManager',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
+}

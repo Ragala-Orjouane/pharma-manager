@@ -1,4 +1,4 @@
-import datetime
+from django.utils import timezone
 
 from django.db import models
 
@@ -59,7 +59,7 @@ class Vente(models.Model):
 
         if not self.reference:
 
-            annee = datetime.now().year
+            annee = timezone.now().year
 
             last_vente = Vente.objects.filter(reference__startswith=f"VNT-{annee}").order_by("id").last()
 

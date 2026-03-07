@@ -43,9 +43,11 @@ INSTALLED_APPS = [
     'apps.medicaments',
     'apps.ventes',
     'apps.categories',
+    "corsheaders",
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -136,3 +138,6 @@ SPECTACULAR_SETTINGS = {
     'VERSION': '1.0.0',
     'SERVE_INCLUDE_SCHEMA': False,
 }
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173",
+]

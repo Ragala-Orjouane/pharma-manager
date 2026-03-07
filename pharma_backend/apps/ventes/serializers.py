@@ -5,7 +5,9 @@ from apps.medicaments.models import Medicament
 #Serializer de LigneVente
 
 class LigneVenteSerializer(serializers.ModelSerializer):
-
+    medicament = serializers.PrimaryKeyRelatedField(
+        queryset=Medicament.objects.filter(est_actif=True)
+    )
     class Meta:
         model = LigneVente
         fields = [

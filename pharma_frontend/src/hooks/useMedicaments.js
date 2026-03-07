@@ -1,6 +1,9 @@
-import { useQuery } from "react-query";
+import { useQuery } from "@tanstack/react-query";
 import { fetchMedicaments } from "../api/medicamentsApi";
 
-export const useMedicaments = (filters = {}) => {
-  return useQuery(["medicaments", filters], () => fetchMedicaments(filters));
+export const useMedicaments = () => {
+  return useQuery({
+    queryKey: ["medicaments"],
+    queryFn: fetchMedicaments,
+  });
 };

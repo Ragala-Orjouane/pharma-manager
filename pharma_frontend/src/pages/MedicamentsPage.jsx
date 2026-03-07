@@ -1,11 +1,9 @@
 import React, { useState } from "react";
-import { createMedicament, updateMedicament, deleteMedicament } from "../api/medicamentsApi";
 import { useMedicaments } from "../hooks/useMedicaments";
 import { useCategories } from "../hooks/useCategories";
 
 const MedicamentsPage = () => {
-  const { data, isLoading, isError } = useMedicaments();
-  const { data: categories } = useCategories();
+  const { data, isLoading, isError, createMedicament, updateMedicament, deleteMedicament } = useMedicaments();  const { data: categories } = useCategories();
   const [editingMedId, setEditingMedId] = useState(null);
   const getCategorieNom = (id) => {
     const cat = categories?.find((c) => c.id === id);
